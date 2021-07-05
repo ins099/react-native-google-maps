@@ -193,6 +193,7 @@ import {View, StyleSheet, Text} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 import Geolocation from 'react-native-geolocation-service';
 import {mapStyle} from './src/mapStyle';
+import MapViewDirections from 'react-native-maps-directions';
 const App = () => {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
@@ -216,6 +217,16 @@ const App = () => {
     );
   }, [1]);
 
+  let origin = {
+    latitude: latitude,
+    longitude: longitude,
+  };
+
+  let destination = {
+    latitude: 24.87563200088301,
+    longitude: 67.04008047909274,
+  };
+
   return (
     <View>
       <Text>This is APP</Text>
@@ -230,6 +241,11 @@ const App = () => {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}>
+          <MapViewDirections
+            origin={origin}
+            destination={destination}
+            apikey={'AIzaSyC5QcvR53Am25p8TjpwTb7Ubxrm2hxlZFo'}
+          />
           <Marker
             coordinate={{
               latitude: latitude,
